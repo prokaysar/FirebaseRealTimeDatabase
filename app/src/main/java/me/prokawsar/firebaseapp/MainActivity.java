@@ -6,22 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private EditText nameText,emailText,phoneText,genderText,ageText;
@@ -32,13 +24,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        nameText = findViewById(R.id.name_id);
-        emailText = findViewById(R.id.email_id);
-        emailText = findViewById(R.id.email_id);
-        phoneText = findViewById(R.id.phone_id);
-        genderText = findViewById(R.id.gender_id);
-        ageText = findViewById(R.id.age_id);
-        button = findViewById(R.id.button2);
+        nameText = findViewById(R.id.new_name_id);
+        emailText = findViewById(R.id.new_email_id);
+        emailText = findViewById(R.id.new_email_id);
+        phoneText = findViewById(R.id.new_phone_id);
+        genderText = findViewById(R.id.new_gender_id);
+        ageText = findViewById(R.id.new_age_id);
+        button = findViewById(R.id.update_id);
         showButton = findViewById(R.id.button3);
         mDatabase = FirebaseDatabase.getInstance().getReference("User Info");
 
