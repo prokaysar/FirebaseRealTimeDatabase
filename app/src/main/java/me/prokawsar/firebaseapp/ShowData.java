@@ -1,5 +1,6 @@
 package me.prokawsar.firebaseapp;
 
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -65,6 +66,15 @@ public class ShowData extends AppCompatActivity {
         phoneText.setText(phone);
         genderText.setText(gender);
         ageText.setText(age);
+
+        //delete operation are here
+        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                deleteData(userId);
+            }
+        });
         final AlertDialog alertDialog = builder.create();
         alertDialog.show();
 
@@ -83,6 +93,13 @@ public class ShowData extends AppCompatActivity {
                 alertDialog.dismiss();
             }
         });
+
+    }
+
+    private void deleteData(String userId) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User Info").child(userId);
+        reference.removeValue();
+        Toast.makeText(this, "Data Deleted..", Toast.LENGTH_SHORT).show();
 
     }
 

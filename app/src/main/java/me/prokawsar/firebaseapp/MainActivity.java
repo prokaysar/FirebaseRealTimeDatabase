@@ -55,9 +55,12 @@ public class MainActivity extends AppCompatActivity {
         String phone = phoneText.getText().toString().trim();
         String gender = genderText.getText().toString().trim();
         String age = ageText.getText().toString().trim();
+
         if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(phone)&& !TextUtils.isEmpty(gender)&& !TextUtils.isEmpty(age) ){
+
             String id =  mDatabase.push().getKey();
             User user = new User(id,name,email,phone,gender,age);
+
             mDatabase.child(id).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
